@@ -1,0 +1,20 @@
+l=set(range(1, 10001) ) #ifrsut using set fucntion
+arr =set()
+
+
+
+
+def d(num):
+  a = num//1000
+  b = (num//100)%10
+  c = (num//10) %10
+  d = num%10
+  return num + a+b+c+d
+  
+for i in range (1,10001):
+  arr.add(d(i)) # set element add function is 'add'
+
+self = sorted(l-arr) # set datas can use subtraction
+
+for i in self:
+  print(i)
