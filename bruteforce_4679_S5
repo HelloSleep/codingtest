@@ -18,3 +18,9 @@ self = sorted(l-arr) # set datas can use subtraction
 
 for i in self:
   print(i)
+
+---
+
+# def d function can be cahnged using str
+for i in str (i):
+  num += int(i)
