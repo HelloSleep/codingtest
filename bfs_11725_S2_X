@@ -1,0 +1,35 @@
+#스스로 못 품
+import sys
+from collections import deque
+input = sys.stdin.readline
+
+n= int(input())
+graph = [[] for _ in range(n+1)]
+ans  = [0] * (n+1)
+
+queue = deque(1)
+
+for i in range(n-1):
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[b].append(a)
+
+def bfs():
+    while queue:
+        now = queue.popleft()
+        for i in graph[now]:
+            if ans[i] == 0:
+                ans[i] = now
+                queue.append(i)
+#def dfs(n):
+#    for i in graph[n]:
+#        if ans[i] ==0 :
+#            ans[i] = n
+#            dfs(i)
+#dfs(1)    
+#res = ans(2:)
+
+bfs()
+res  = ans[2:]
+for x in res:
+    print(x)
