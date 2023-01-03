@@ -1,0 +1,8 @@
+def solution(price, money, count):
+    total=0
+    for w in range(1,count+1):
+        totla+= price*w
+    if money<total:
+        return total-money
+    else:
+        return 0
