@@ -1,0 +1,7 @@
+def solution(n, money):
+    dp = [0] * (n+1)
+    for coin in money:
+        dp[coin] += 1
+        for now in range(coin+1,n+1):
+            dp[now] += dp[now-coin]
+    return dp[n]
