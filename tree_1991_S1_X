@@ -39,3 +39,37 @@ print()
 inorder('A')
 print()
 postorder('A')
+----
+#아래는 직접 해본 것
+n = int(input())
+arr= dict()
+
+for i in range(n):
+    a, b, c=  map(str, input().split())
+    arr[a] =b,c
+
+
+
+def preorder(v):
+    if v !='.':
+        print(v,end='')
+        preorder(arr[v][0])
+        preorder(arr[v][1])
+
+def inorder(v):
+    if v !='.':
+        inorder(arr[v][0])
+        print(v,end='')
+        inorder(arr[v][1])
+
+def postorder(v):
+    if v !='.':
+        postorder(arr[v][0])
+        postorder(arr[v][1])
+        print(v,end='')
+
+preorder('A')
+print()
+inorder('A')
+print()
+postorder('A')   
