@@ -1,0 +1,10 @@
+import math
+def solution(k, d):
+    answer = 0
+    d_square=d**2
+    for i in range(0,d+1,k):
+        answer += int((d_square -i**2 )**.5)//k +1 #x한 칸에 가능한 모든 y의 개수를 더한다고 생각하면된다. x가0일경우 최대 k번마다점을 찍는 y의 개수+...
+
+    
+    return answer
+    
