@@ -1,0 +1,13 @@
+def solution(brown, yellow):
+    s= yellow+ brown
+    
+    for i in range(1, s+1):
+        if s% i == 0:
+            a =s//i #나누어 떨어지는 가로 세로 설정
+            
+            if yellow == (i-2) * (a-2): # (전체 가로-2 )*(전체 세로 -2) 넓이 =yellow의 개수
+                
+                return [a,i] #가로가 항상 커야하기 때문에 순서주의. 필요시 for문을 s부터 1까지 하강하면 [i,a]로 표기가능
+
+                
+        
