@@ -1,0 +1,64 @@
+import heapq
+
+def solution(operations):
+    answer = []
+    heap = []
+    heap_max = []
+    
+    for i in range(len(operations)):
+        #문자와 숫자 입력받기
+        command = operations[i][:1]
+        num =int(operations[i][2:])
+        
+        if command =='I' and num <0:
+            heapq.heappush(heap,num)
+        if command =='I' and num >= 0:
+            heapq.heappush(heap_max,num)
+            
+        if command =='D' and num == -1:
+            
+            if len(heap) >0 :
+                heapq.heappop(heap)
+            elif len(heap_max) != 0:
+                heapq.heappop(heap_max)
+                
+        if command =='D' and num == 1:
+            if len(heap_max) >0:
+                heapq.heappop(heap_max)
+            elif len(heap) != 0:
+                heapq.heappop(heap)
+                
+    print(heap)
+    print(heap_max)
+    h = heap+ heap_max
+    
+    if len(heap) == 0 and len(heap_max) == 0 :
+        return [0,0]
+    else:
+        return [max(h), min(h)]
+                
+    return
+    
+    
+#더 쉽게 하나의 heap으로 구현하는 방법. nlarge라는 heapq 함수를 사용
+import heapq
+
+def solution(operations):
+    heap = []
+    for op in operations:
+        print(op)
+        command, num = op.split()
+        if command == 'D':
+            if not heap:  # 삭제할 데이터가 없다면
+                continue
+            if num == '1':  # 최댓값 삭제
+                print("nlarge",heapq.nlargest(1, heap), "heap = ",heap)
+                heap.remove(heapq.nlargest(1, heap)[0]) #heapq.nlargest의 반환값이 list라서 원소참조를 위해 [0]사용
+                
+            else:  # 최솟값 삭제
+                heapq.heappop(heap)
+        else:
+            heapq.heappush(heap, int(num))
+
+    return [heapq.nlargest(1, heap)[0], heap[0]] if heap else [0, 0]
+    
