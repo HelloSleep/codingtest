@@ -1,0 +1,23 @@
+#투 포인터로서 부분합 개수 구하기
+#내부 합이 부분합보다 작은 경우 end를 증가
+#내부 합이 부분합과 같은 경우 count+1, start 증가
+n = 5 #데이터 개수
+m = 5 # 구하고자하는 부분합
+data = [1,2,3,2,5] #주어진 자연수 배열
+
+count = 0 #부분합 개수
+end = 0 #0번째 부터 end 시작
+internal_sum = 0 #부분합을 구하기위한 내부합
+
+
+for start in range(n):
+  
+  while internal_sum < m and end <n: #end 증가 조건 설정
+    internal_sum += data[end]
+    end+=1
+
+  if internal_sum  == m:
+    count +=1
+  internal_sum -= data[start] #start를 다음 원소로 이동 시켜 주기에 내부합의 값은 start가 이동한 만큼 감소
+
+print(count)
