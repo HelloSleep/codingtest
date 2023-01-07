@@ -1,0 +1,31 @@
+import sys
+input = sys.stdin.readline
+n, m = map(int, input().split())
+array = list(map(int, input().split()))
+
+start = 0
+end = max(array)
+internal_sum = 0
+answer =[]
+
+while start<=end:
+  mid = (start+end) // 2
+  
+  for a in array:
+    if a > mid:
+      internal_sum += a-mid
+      
+  if internal_sum < m:
+    end = mid-1
+  else:
+    answer.append(mid)
+    start = mid +1
+  
+  internal_sum = 0
+
+
+print(max(answer))
+    
+  
+
+
