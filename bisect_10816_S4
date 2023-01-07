@@ -1,0 +1,21 @@
+from bisect import bisect_left, bisect_right
+import sys
+input = sys.stdin.readline
+
+def binary(arr, left_value , right_value):
+    right = bisect_right(arr, right_value)
+    left = bisect_left(arr, left_value)
+    #print(right_value, left_value, right, left ,end = ' ')
+    return right - left
+
+n = int(input())
+narray = list(map(int, input().split()))
+narray.sort() #bisect 사용 조건이 이미 정렬된 수여야함. 아닐 경우 만약 원소가 비연속적으로 나올경우 올바르지 않은 값 반환
+
+  
+m = int(input())
+marray = list(map(int, input().split()))
+
+
+for i in marray:
+    print ( binary(narray,i,i) ,end =' ')
