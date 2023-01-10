@@ -1,0 +1,20 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/138476
+
+from collections import Counter
+
+def solution(k, tangerine):
+    answer = 0
+    counter = Counter(tangerine)
+    count = 0
+    i=0
+    length = len (set(counter))
+    arr = counter.most_common(length)
+    
+    while count <= k:
+        count += arr[i][1]
+        i+=1
+        if count>=k:
+            break
+    
+    
+    return i
