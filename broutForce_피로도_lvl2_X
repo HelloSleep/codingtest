@@ -1,0 +1,21 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/87946
+
+import itertools
+def solution(k, dungeons):
+    answer = 0
+    map  = itertools.permutations(dungeons,len(dungeons))
+    
+    for dungeon in map:
+        stress = k
+        count = 0
+        
+        for room in dungeon:
+            if stress>=room[0]:
+                stress -=room[1]
+                count+=1
+
+        answer = max(count, answer)
+            
+        
+    
+    return answer
