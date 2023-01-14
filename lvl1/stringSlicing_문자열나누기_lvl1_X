@@ -1,0 +1,24 @@
+#https://school.programmers.co.kr/learn/courses/30/lessons/140108
+#다른 사람의 풀이
+
+def solution(s):
+    answer = 0
+    t = ["", 0, 0] #t= ['x문자', check문자가 x일 경우 거리, check문자가 x가 아닌 경우 거리]
+    for i in s:
+        if t[0] == "":
+            t[0] = i
+            t[1] += 1
+        else :
+            if t[0] == i:
+                t[1] += 1
+            else :
+                t[2] += 1
+            if t[1] == t[2]:
+                answer += 1
+                t = ["", 0, 0]
+    # 만약 두 횟수가 달라서 더 이상 읽을 글자가 없는 경우
+    #ex "abracadabra"인 경우 for문을 빠져나오면 answer =5, t= ["a",1,1]상태에서 남은 문자열을 분해 시켜줌으로서 answer= 6을 가짐
+    if t != ["", 0, 0]: 
+        
+        answer += 1
+    return answer
