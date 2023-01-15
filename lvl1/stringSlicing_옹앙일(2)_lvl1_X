@@ -1,0 +1,13 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/133499
+def solution(babbling):
+    answer = 0
+    for i in babbling:
+        for j in ['aya','ye','woo','ma']:
+            if j*2 not in i: # 연속 옹알이인경우 무조건 안 됨으로 옹알이가 가능한 경우만 치환
+                
+                i=i.replace(j,' ') #옹알이에 해당하는 부분을 빈 값으로 치환
+        
+        if len(i.strip())==0:  # 새로 만든 리스트가 빈 원소인 경우, 즉 옹알이만으로 가능한 경우
+            answer +=1
+            
+    return answer
