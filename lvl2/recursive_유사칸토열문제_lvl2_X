@@ -1,0 +1,56 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/148652
+# 시간초과가 나온 내 풀이
+
+def kantor (n):
+    if n == 0:
+        return "1"
+    
+    str = kantor(n-1)
+    a = ''
+    for s in str:
+        if s == "1":
+            part = "11011"
+            a +=part
+        if s == "0":
+            part = "00000"
+            a += part
+        
+    
+        
+          
+    return a
+    
+def solution(n, l, r):
+    answer = 0
+    list_array = [ [0] for _ in range(20)]
+    arr =[]
+    i = 0
+    
+    
+    while i<=n:
+        if len(list_array[i]) == 1:
+            list_array[i]=kantor(i)
+        i+=1
+        
+    answer = list_array[n][l-1:r].count("1")
+
+    
+
+    return answer
+
+
+# 정답 풀이
+
+def solution(n, l, r):
+    answer = r-l+1
+    for num in range(l-1,r):
+        while num>=1:
+            a,b=divmod(num,5)
+            if b==2 or a==2:
+                answer-=1
+                break
+            num=a
+
+
+    return answer
+

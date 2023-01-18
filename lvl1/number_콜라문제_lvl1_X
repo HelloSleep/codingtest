@@ -1,0 +1,42 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/132267
+
+#내가 틀린 답안
+def solution(a, b, n):
+    answer = 0
+    arr = []
+    empty = []
+    left = n
+    
+    while left >=a:
+        
+        div = left%a
+        left = left//a
+        add = left*b
+        
+        if div != 0:
+            empty.append(div)
+        arr.append(add)
+        
+        if left < a and len(empty) >0:
+            e = 0 
+            while len(empty) !=0:
+                e += empty.pop()
+            left += e
+    
+    answer = sum(arr)
+    print("answer = ",answer)
+    print("left",left)
+    return answer
+
+solution(4,2,5)
+
+### 정답 
+
+def solution(a, b, n):
+    answer =0
+    while(n>=a):
+        n = n - a +b
+        answer += b
+
+    
+    return answer
