@@ -1,0 +1,26 @@
+#https://school.programmers.co.kr/learn/courses/30/lessons/147354
+
+# 2차원 배열에서 lambda를 사용한 정렬을 아는가? (내림차순 포함)
+# Xor bit연산자를 아는가 ? (^ 기호)
+
+
+def solution(data, col, row_begin, row_end):
+    answer = 0
+    s = [[0] for _ in range(len(data))]
+    
+    
+    for i in range(len(data)):
+        data.sort(key = lambda x: (x[col-1] , -x[0]))
+        
+        small_sum =0
+        for j in range(len(data[0])):
+            small_sum  += data[i][j] % (i+1)
+            
+            s[i] = small_sum
+        
+    xor_bit =  s[row_begin-1]
+    for i in range(row_begin+1,row_end+1 ):
+        xor_bit = xor_bit ^s[i-1]
+    answer = xor_bit
+    
+    return answer
