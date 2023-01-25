@@ -1,0 +1,26 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/42840
+# 완전탐색임을 파악하였는가?
+# 완전탐색임을 고려하여 모든 경우의수를 대입 하였는가?
+# 마지막에 결과값읋 이용하여 필요한 원소만 추가하기
+def solution(answers):
+    answer = []
+    a = [1,2,3,4,5] # 5
+    b = [2, 1, 2, 3, 2, 4, 2, 5] # 8
+    c = [3,3,1,1,2,2,4,4,5,5] # 10
+    score = [0,0,0]
+    
+    
+    for i in range(len(answers)):
+        correct = answers[i]
+        if(a[i%len(a)] == correct):
+            score[0] += 1
+        if(b[i%len(b)] == correct):
+            score[1] += 1
+        if(c[i%len(c)] == correct):
+            score[2] += 1
+            
+    for i in range(3):
+        if score[i] == max(score):
+            answer.append(i+1)
+    
+    return answer
