@@ -1,0 +1,31 @@
+# 문자열로 입력받을 경우 postorder를 출력해보는 연습
+# 문자열 입력시 노드의 상태는 어떻게 입력받아야하는가?
+def solution(str):
+    str = list(str)
+    arr = dict()
+    n = len(str)
+    visited = [False for _ in range(n)]
+
+    while str:
+        s = str.pop(0)
+        if s not in arr and len(str) >= 2:
+            left = str.pop(0)
+            right = str.pop(0)
+            arr[s] = left, right
+        elif s not in arr and len(str) == 1:
+            left = str.pop(0)
+            arr[s] = left, False
+        elif s not in arr and len(str) == 0:
+            arr[s] = False, False
+
+    print(arr)
+    print(visited)
+    return 0
+    # while :
+    #     if v != False:
+    #         postorder(arr[v][0])
+    #         postorder(arr[v][1])
+    #         print(v,end='')
+
+
+solution("ABCDEFG")
