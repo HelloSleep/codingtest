@@ -1,0 +1,30 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/12941
+# 크기가 1000일지라도 for문안에서 pop, remove작업시 시간초과 발생
+
+def solution(A,B):
+    answer = 0
+    
+    A.sort()
+    B.sort(reverse=True)
+    print(A)
+    print(B)
+    #min (A) * max(B)와 max(A) min(A )비교후 더 작은거 선택
+    #A,B에서 선택한 값 제거
+    for i in range(len(A)):
+        answer += A[i]* B[i]
+        #min_A = min(A) * max(B)
+        #min_B = min(B) * max(A)
+        #if min_A <= min_B:
+        #    answer+=min_A
+        #    A.pop(0)
+        #    B.pop()
+        # else:
+        #     answer+=min_B
+        #     A.pop()
+        #     B.pop(0)
+        
+        # remove를 쓰면 O(n^2)이 돼서 효율성 0점
+        # pop방식도 효율성 0점
+        
+
+    return answer
