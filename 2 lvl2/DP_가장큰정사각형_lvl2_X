@@ -1,0 +1,37 @@
+# https://school.programmers.co.kr/learn/courses/30/lessons/12905
+def solution(board):
+    answer = 0
+    row = len(board)
+    col = len(board[0])
+    
+    
+    # 어떤 알고리즘을 써야하는 가?-> DFS? and 재귀함수?, 구현?
+    #1의 i와 j를 저장?
+    #상하좌우 이동?
+    #sum(1이 담긴 배열)?
+    
+    #n크기 사각형부터 모서리 이동 -> 시도해볼만함.
+    #시도는 좋았으나 이를 DP까지로 이어지는데는 부족했음
+    
+    #정답 알고리즘만 본 후 풀이
+    DP= [[0 for _ in range(col)] for _ in range(row)]
+    DP[0] = board[0]
+    
+    for i in range(row):
+        DP[i][0] = board[i][0]
+    
+    #print(DP[0])
+    for i in range(1,row):
+        for j in range(1,col):
+            if board[i][j] == 1: #정답 참고 조건문추가
+                DP[i][j] =  min(DP[i-1][j-1], DP[i-1][j], DP[i][j-1]) +1
+        print(DP[i])
+        
+    answer = 0
+    for i in range(row):
+        temp = max(DP[i])
+        answer = max(answer, temp)            
+    
+    
+
+    return answer**2
