@@ -36,6 +36,15 @@ def solution(s, skip, index):
         answer+=chr_arr[-1]
         
     
+    # 다른 사람 정답 참고
+
+    alpha = "abcdefghijklmnopqrstuvwxyz"
+    answer = ""
+    for i in list(skip):
+        alpha = alpha.replace(i,"")
     
+    for a in s:
+        
+        answer += alpha[(alpha.find(a) + index) % len(alpha)]
     
     return answer
