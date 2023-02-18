@@ -1,4 +1,5 @@
 # https://school.programmers.co.kr/learn/courses/30/lessons/42883
+# 케이스10 시간초과
 def solution(number, k):
     answer = ''+
     
